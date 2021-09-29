@@ -3,11 +3,9 @@
 //초기값
 const initialState = {
     list : [
-        {word:'하나',explain:'1을 말한다',ex:'1의 예시'},
-        {word:'둘',explain:'2를 말한다',ex:'2의 예시'},
-        {word:'셋',explain:'3을 말한다',ex:'3의 예시'},
-        {word:'넷',explain:'4를 말한다',ex:'4의 예시'}
-    ]
+        
+    ],
+    edit : ""
 }
 
 //액션타입
@@ -16,8 +14,8 @@ const Add = "word/Add";
 const Edit ="word/Edit";
 
 //액션함수
-export const loadDict = (x)=>{
-    return {type:LOAD, list:x}
+export const loadDict = (list)=>{
+    return {type:LOAD, list}
 }
 export const addDict = (x,y,z) =>{
     return {type:Add, Word: x, Explain:y, Ex:z}

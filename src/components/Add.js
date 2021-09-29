@@ -16,16 +16,12 @@ const Add = () => {
     const history = useHistory();
     const dispatch = useDispatch()
     const addEvent = async() => {
-        console.log(word.current.value)
-        console.log(explain.current.value)
-        console.log(ex.current.value)
 
         await addDoc (collection(db, 'wordList'), { word:word.current.value , explain: explain.current.value, ex:  ex.current.value})
         const query = await getDocs(collection(db,'wordList'));
         query.forEach((doc)=>{
-            console.log(doc.data())
-            dispatch(loadDict(doc.data()))
-         })
+            dispatch(loadDict({...doc.data(),id:doc.id}))
+        })
         
         history.push("/");
     }

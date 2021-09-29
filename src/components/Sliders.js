@@ -63,7 +63,6 @@ const Sliders = () => {
                     list.map((list, index) => {
                         const english = /[a-zA-Z]/; 
                         const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-                        // const card_word = list.word.length > 10? list.word.slice(0,10) +"..." : list.word;
                         let card_word;
                         if (list.word.length > 14 && english.test(list.word)){
                             card_word = list.word.slice(0,14) +"...";
@@ -72,15 +71,6 @@ const Sliders = () => {
                         }else{
                             card_word = list.word;
                         }
-
-                        // let card_explain;
-                        // if (list.explain.length > 20 && list.explain.indexOf(english) > 0){
-                        //     card_explain = list.explain.slice(0,20) +"...";
-                        // }else if (list.word.length > 8 && korean.test(list.explain)){
-                        //     card_explain = list.explain.slice(0,8) +"...";
-                        // }else{
-                        //     card_explain = list.explain;
-                        // }
 
 
                         return (

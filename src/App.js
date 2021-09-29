@@ -5,32 +5,33 @@ import Add from "./components/Add";
 import Main from "./components/Main";
 import Detail from './components/Detail';
 import Edit from './components/Edit'
-import {Route, Switch,useHistory} from "react-router-dom";
+import BackButton from "./components/BackButton";
+import {Route, Switch} from "react-router-dom";
 import styled from "styled-components";
 import { loadDict } from "./redux/module/word";
+
 
 import {db} from "./firebase";
 import {collection,  getDocs} from "firebase/firestore"
 
 
-
-
 function App() {
-  const history = useHistory();
+  
   const dispatch = useDispatch();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(async()=>{
     const query = await getDocs(collection(db,'wordList'));
+    
     query.forEach((doc)=>{
-        console.log(doc.data())
-        dispatch(loadDict(doc.data()))
+        dispatch(loadDict({...doc.data(),id:doc.id}))
+        console.log(doc.id);
     })
   },[]);
 
   return (
     <Appbox>
-      <GoBack onClick={()=>{history.push("/");}} className="GoBack">{String("<뒤로가기")}</GoBack>
+      <BackButton/>
       <Switch>
      <Route path="/" exact component={Main}/>
      <Route path="/add" exact component={Add}/>

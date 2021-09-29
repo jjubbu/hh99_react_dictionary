@@ -12,6 +12,7 @@ const Main = () => {
 
     return (
         <MainBox>
+           
             <SliderButton/>
             <Sliders/>
             <Button onClick={() => {history.push("/add");}} className="addButton">
@@ -33,5 +34,8 @@ align-items: center;
 .addButton{
     background-color: #ffde00;
     color:#000;
+    &:hover{
+        opacity:.8;;
+    }
 }
 `
